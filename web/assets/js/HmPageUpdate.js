@@ -28,8 +28,6 @@ function refresh() {
             for (var i = 1; i < 21; i++) {
                 $("#title_" + i).html(arr[i-1].title);
                 $("#link_" + i).attr("href", "Search?code=STitem&itemid=" + arr[i-1].itemId + "&To=203");
-
-
             }
         }});
 }
