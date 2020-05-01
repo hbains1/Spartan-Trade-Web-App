@@ -1,5 +1,4 @@
 //https://www.youtube.com/watch?v=z5SFVYgoXiw
-
 $(document).ready(function () {
     var pageNum = 0;
     var pageSize = 12;
