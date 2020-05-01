@@ -1,11 +1,4 @@
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 //https://www.youtube.com/watch?v=z5SFVYgoXiw
-
 
 $(document).ready(function () {
     var pageNum = 0;
@@ -13,8 +6,6 @@ $(document).ready(function () {
 
     pageUpdate(pageNum, pageSize);
 
-
-    // Need to add page limiter here.
     $(".next-btn").on("click", function () {
         pageNum++;
 
@@ -29,9 +20,7 @@ $(document).ready(function () {
             pageUpdate();
         }
         console.log("page = " + pageNum);
-
     });
-
 
     function pageUpdate(pageNum, pageSize) {
         $.ajax({
