@@ -1,0 +1,117 @@
+<%-- Navigation for Spartan Trade --%>
+<%@ page pageEncoding="UTF-8" %>
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+</head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.js"></script>
+<script src="assets/js/HmPageUpdate.js"></script>
+<script src="assets/js/HomepageForm.js"></script>
+<script src="http://malsup.github.com/jquery.form.js"></script> 
+<script src="assets/js/main.js"></script>
+<link href="assets/css/toolkit-inverse.css" rel="stylesheet">
+<link href="assets/css/hover.css" rel="stylesheet">
+<link href="assets/css/application.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+Paaji+2:wght@600&family=Lexend+Giga&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<%@page import="Control.Account.Account"%>
+<%
+    Account acc = new Account(config, request, response);
+    boolean isLogin = acc.checkIsSignIn();
+%>
+
+<div class="col-md-3 sidebar">
+    <nav class="sidebar-nav navbar-expand-xl">
+        <div class="sidebar-header">
+            <button class="nav-toggler nav-toggler-md sidebar-toggler" type="button" data-toggle="collapse"
+                    data-target="#nav-toggleable-md">
+                <span class="sr-only">Toggle nav</span>
+            </button>
+            <a class="sidebar-brand img-responsive" href="Home.jsp">
+                <span class="icon sidebar-brand-icon"><img src="assets/img/spartan_nav_icon.png" alt=""></span>
+            </a>
+        </div>
+
+        <div class="collapse nav-toggleable-md" id="nav-toggleable-md">
+            <ul class="nav nav-pills nav-stacked flex-column">
+                <%
+                    // Change nav bar if user is logged in.
+                    if (isLogin) {
+                %>
+                <!-- User Panel -->
+                <li class="nav-header ">User Account</li>
+                <li class="dropdown">
+                    <a href="#" class="nav-link hvr-underline-from-center dropdown-toggle user-action gold"
+                       data-toggle="dropdown">
+                        <i class="fa fa-user-circle-o mr-2" aria-hidden="true"></i>
+                        Welcome <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="Search?code=URSR&To=204&page=0" class="dropdown-item"><i class="fa fa-user-o"></i> Profile</a></li>
+                        <li><a href="AccountInfo.jsp" class="dropdown-item"><i class="fa fa-sliders"></i> Settings</a></li>
+                        <li class="divider dropdown-divider"></li>
+                        <li><a href="Acc?code=Logoff&To=200" class="dropdown-item"><i class="fa fa-sign-out" aria-hidden="true"></i>
+                                Logout</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link gold hvr-underline-from-center" href="Main_Menu.jsp" style="color: inherit;"><i
+                            class="fa fa-th-list mr-2" aria-hidden="true"></i>
+                        Main Menu</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link gold hvr-underline-from-center" href="Home.jsp"><i
+                            class="fa fa-home mr-2"></i><span>Home Page</span></a>
+                </li>
+
+                <%
+                } else {
+                %>                
+                <li class="nav-header">Dashboards</li>
+                <li class="nav-item">
+                    <a class="nav-link active hvr-underline-from-center" href="Home.jsp"><i
+                            class="fa fa-home mr-2"></i><span>Overview</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link gold hvr-underline-from-center" data-toggle="modal" data-toggle="modal"
+                       data-target="#login-modal"><i class="fa fa-sign-in mr-2"></i>Sign In here</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link gold hvr-underline-from-center" href="SubmitListing.jsp" style="color: inherit;"><i
+                            class="fa fa-plus mr-1" aria-hidden="true"></i>
+                        Post Item</a>
+                </li>
+                <%
+                    }
+                %>
+                <li class="nav-header ">Useful Link</li>
+                <li class="nav-item">
+                    <a class="nav-link gold hvr-underline-from-center" href="User-manual/index.html">
+                        <i class="fa fa-question-circle mr-1" aria-hidden="true"></i>
+                        User Manual
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link gold hvr-underline-from-center" href="http://ec2-3-93-23-132.compute-1.amazonaws.com:8080/swagger-ui.html">
+                        <i class="fa fa-question-circle mr-1" aria-hidden="true"></i>
+                        Rest API Manual
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link gold hvr-underline-from-center" href="SafetyInfo.jsp">
+                        <i class="fa fa-info-circle mr-2" aria-hidden="true"></i>Safety Info
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link gold hvr-underline-from-center"
+                       href="https://docs.google.com/forms/d/e/1FAIpQLSfyt67JI-tlYN2fj_eWzASmIDZaJ4FQO4-LCIpEBG3oL35wDA/viewform"
+                       target="_blank" rel="noopener noreferrer"><i class="fa fa-commenting-o mr-1" aria-hidden="true"></i>
+                        Feedback?</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
